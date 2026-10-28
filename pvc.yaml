@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: agile-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 100Mi
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: agile-storage-pod
+  labels:
+    app: agile-storage-pod
+spec:
+  containers:
+  - name: agile-storage-container
+    image: harikrishna7416/agile-kubernetes:latest
+    volumeMounts:
+    - name: agile-storage-volume
+      mountPath: /app/data
+  volumes:
+  - name: agile-storage-volume
+    persistentVolumeClaim:
+      claimName: agile-pvc

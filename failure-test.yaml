@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: agile-failed-deployment
+  labels:
+    app: agile-failed-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: agile-failed-deployment
+  template:
+    metadata:
+      labels:
+        app: agile-failed-deployment
+    spec:
+      containers:
+      - name: failed-container
+        image: harikrishna7416/non-existent-image:9999

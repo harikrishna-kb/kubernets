@@ -1,8 +1,8 @@
-﻿pipeline {
+pipeline {
     agent any
     environment {
-        DOCKER_USERNAME = "saharsh1211"
-        IMAGE_NAME = "online-book-store"
+        DOCKER_USERNAME = "harikrishna7416"
+        IMAGE_NAME = "agile-kubernetes"
         IMAGE_TAG = "latest"
     }
     stages {
@@ -18,9 +18,9 @@
         }
         stage('Verify Rollout') {
             steps {
-                bat 'kubectl rollout status deployment/online-book-store'
-                bat 'kubectl get pods -l app=online-book-store'
-                bat 'kubectl get svc online-book-store-service'
+                bat 'kubectl rollout status deployment/agile-kubernetes'
+                bat 'kubectl get pods -l app=agile-kubernetes'
+                bat 'kubectl get svc agile-kubernetes-service'
             }
         }
     }

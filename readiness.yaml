@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: agile-probe-deployment
+  labels:
+    app: agile-probe
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: agile-probe
+  template:
+    metadata:
+      labels:
+        app: agile-probe
+    spec:
+      containers:
+      - name: agile-probe
+        image: harikrishna7416/agile-kubernetes:latest
+        ports:
+        - containerPort: 3000
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 5

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: agile-kubernetes-pod
+  labels:
+    app: agile-kubernetes-pod
+spec:
+  containers:
+  - name: agile-kubernetes
+    image: harikrishna7416/agile-kubernetes:latest
+    ports:
+    - containerPort: 3000
