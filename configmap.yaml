@@ -5,3 +5,27 @@ metadata:
 data:
   APP_ENV: "production"
   PORT: "3000"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: agile-config-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: agile-config-app
+  template:
+    metadata:
+      labels:
+        app: agile-config-app
+    spec:
+      containers:
+      - name: web
+        image: harikrishna7416/agile-kubernetes:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
+        envFrom:
+        - configMapRef:
+            name: agile-config
