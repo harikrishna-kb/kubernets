@@ -2,8 +2,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: agile-kubernetes
-  labels:
-    app: agile-kubernetes
 spec:
   replicas: 2
   selector:
@@ -17,6 +15,7 @@ spec:
       containers:
       - name: agile-kubernetes
         image: harikrishna7416/agile-kubernetes:latest
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3000
 ---
